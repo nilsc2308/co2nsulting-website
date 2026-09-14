@@ -65,6 +65,9 @@
 
 <section class="sec" style="padding-top:clamp(40px,6vw,80px)"><div class="wrap">
   <div class="sec-head"><p class="eyebrow">Anfrage</p><h2 class="h-l split">Beratung anfordern.</h2><p class="lead reveal">Tragen Sie Ihre Daten ein und wir kontaktieren Sie bezüglich eines Termins – in der Regel innerhalb von zwei Werktagen.</p></div>
+  <div class="pick reveal" id="pick" role="group" aria-label="Thema wählen">
+    <button data-v="Neubau"><span>🏗️</span>Neubau</button><button data-v="Sanierung / Sanierungsfahrplan"><span>🧱</span>Sanierung</button><button data-v="Baudenkmal"><span>🏛️</span>Baudenkmal</button><button data-v="Fördermittel"><span>💶</span>Fördermittel</button><button data-v="BIM & Digitalisierung"><span>🖥️</span>BIM</button><button data-v="Green Building / Zertifizierung"><span>🌿</span>Green Building</button>
+  </div>
   <form class="form light reveal" id="contactForm" name="anfrage" method="POST" action="danke.html" data-netlify="true" netlify-honeypot="firma-website" style="margin:0">
     <input type="hidden" name="form-name" value="anfrage">
     <p class="hp" aria-hidden="true"><label>Bitte leer lassen <input name="firma-website" tabindex="-1" autocomplete="off"></label></p>
@@ -121,6 +124,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

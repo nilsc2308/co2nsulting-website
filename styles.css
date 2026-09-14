@@ -562,3 +562,43 @@ footer .flogo{width:220px;height:auto;margin-bottom:16px}
 @media(max-width:600px){.phases{grid-template-columns:1fr}.ph{min-height:auto}}
 .disc em{color:var(--green-2);font-style:normal;font-weight:600}
 a.loc{display:block;color:inherit}
+/* ===== Selbst ausprobieren: Heizkosten- & CO2-Check ===== */
+.check{display:grid;grid-template-columns:1fr 1.1fr;gap:16px}
+.check-in{background:var(--dark-2);border-radius:var(--r);padding:clamp(28px,3vw,44px);color:#fff}
+.check-in label{display:flex;justify-content:space-between;font-weight:600;margin-bottom:10px}
+.check-in output{font-variant-numeric:tabular-nums;color:var(--green)}
+.check-in .seg button{border-color:rgba(255,255,255,.2);color:#fff}
+.check-in .seg button[aria-pressed=true]{background:var(--green);color:var(--petrol);border-color:var(--green)}
+.check-in .toggle input{background:rgba(255,255,255,.25)}
+.check-in .toggle input:checked{background:var(--green)}
+.check-out{background:#fff;color:var(--ink);border-radius:var(--r);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:22px}
+.ck-top{display:flex;align-items:center;gap:22px}
+.ck-cls{display:grid;place-items:center;width:84px;height:84px;border-radius:22px;font-size:40px;font-weight:700;color:#fff;background:#d93a2b;transition:background .5s}
+.ck-top b{display:block;font-size:clamp(36px,4vw,56px);letter-spacing:-.04em;line-height:1}
+.ck-top small,.ck-grid small{display:block;color:var(--ink-2);font-size:13px;margin-top:4px;line-height:1.35}
+.ck-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ck-grid div{background:var(--bg-2);border-radius:18px;padding:18px 20px}
+.ck-grid b{display:block;font-size:26px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.ck-bar{height:10px;border-radius:5px;background:linear-gradient(90deg,#1a9641,#79b830,#e8c31b,#f19a1a,#d93a2b,#b3161b);position:relative}
+.ck-bar i{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--petrol);transform:translate(-50%,-50%);transition:left .6s var(--ease)}
+.ck-hint{font-size:15px;line-height:1.5;color:var(--ink-2)}
+.check-out .btn{align-self:flex-start}
+@media(max-width:900px){.check{grid-template-columns:1fr}.ck-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ck-grid{grid-template-columns:1fr}}
+/* FAQ-Suche */
+.faq-search{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 18px;margin-bottom:34px}
+.faq-search input{flex:1;border:0;font:inherit;font-size:17px;padding:10px 0;background:none;color:var(--ink);outline:none}
+.faq-search input::placeholder{color:#8e8e93}
+.faq-search span{font-size:13px;color:var(--ink-2);white-space:nowrap}
+.faq-search svg{color:var(--ink-2);flex:none}
+.faq-empty{color:var(--ink-2);padding:20px 0}
+.faq-empty a{color:var(--petrol);border-bottom:1px solid var(--line)}
+.q.hide{display:none}
+.q mark{background:rgba(143,199,143,.45);color:inherit;border-radius:3px}
+/* Kontakt: Thema wählen */
+.pick{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:760px;margin:0 auto 26px}
+.pick button{background:var(--bg-2);border-radius:18px;padding:16px 8px;font-size:13px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:8px;border:2px solid transparent;transition:transform .4s var(--ease),border-color .3s,background .3s}
+.pick button span{font-size:26px;line-height:1}
+.pick button:hover{transform:translateY(-3px)}
+.pick button[aria-pressed=true]{border-color:var(--green-2);background:#fff}
+@media(max-width:700px){.pick{grid-template-columns:repeat(3,1fr)}}

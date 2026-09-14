@@ -189,6 +189,59 @@
     pick(sysList.querySelector('button'));
   }
 
+  // Heizkosten- & CO2-Check (Startseite)
+  const ckYear = document.getElementById('ckYear');
+  if (ckYear) {
+    const $ = id => document.getElementById(id);
+    const area = $('ckArea'), heat = $('ckHeat'), san = $('ckSan');
+    // typischer Endenergiebedarf je Baualtersklasse (kWh/m²·a, Richtwerte)
+    const kwhByYear = y => y < 1919 ? 225 : y < 1949 ? 215 : y < 1958 ? 220 : y < 1969 ? 205 : y < 1979 ? 190 : y < 1984 ? 165 : y < 1995 ? 135 : y < 2002 ? 105 : y < 2010 ? 80 : y < 2016 ? 60 : 45;
+    // Preis €/kWh Endenergie und CO2 kg/kWh (Richtwerte 2026); Wärmepumpe über Jahresarbeitszahl 3,5
+    const fuels = { gas: { p: .12, co2: .20, n: 'Gas' }, oel: { p: .11, co2: .27, n: 'Öl' }, fern: { p: .14, co2: .18, n: 'Fernwärme' }, wp: { p: .32 / 3.5, co2: .38 / 3.5, n: 'Wärmepumpe' }, pellet: { p: .08, co2: .02, n: 'Pellets' } };
+    const classes = [['A+', 30, '#1a9641'], ['A', 50, '#3fa53a'], ['B', 75, '#79b830'], ['C', 100, '#b5c920'], ['D', 130, '#e8c31b'], ['E', 160, '#f19a1a'], ['F', 200, '#e8661a'], ['G', 250, '#d93a2b'], ['H', 1e9, '#b3161b']];
+    const eur = n => Math.round(n).toLocaleString('de-DE') + ' €';
+    const num = { cost: 0, co2: 0, save: 0, trees: 0 };
+    const paint = () => { $('ckCost').textContent = eur(num.cost); $('ckCo2').textContent = (Math.round(num.co2 * 10) / 10).toLocaleString('de-DE') + ' t'; $('ckSave').textContent = eur(num.save); $('ckTrees').textContent = Math.round(num.trees).toLocaleString('de-DE'); };
+    const calc = () => {
+      const y = +ckYear.value, a = +area.value, f = fuels[heat.querySelector('[aria-pressed=true]').dataset.k];
+      let kwh = kwhByYear(y); if (san.checked && y < 2002) kwh = Math.round(kwh * .7);
+      const cls = classes.find(c => kwh < c[1]); const target = 45; // Effizienzhaus-Niveau
+      const total = kwh * a, cost = total * f.p, co2 = total * f.co2 / 1000, save = (kwh - target) * a * f.p;
+      $('ckYearOut').value = y; $('ckAreaOut').value = a + ' m²'; $('ckKwh').textContent = kwh; $('ckCls').textContent = cls[0]; $('ckCls').style.background = cls[2];
+      $('ckBar').style.left = Math.min(98, Math.max(2, kwh / 260 * 100)) + '%';
+      $('ckHint').textContent = kwh <= 50 ? `Ihr Haus liegt bereits auf einem sehr guten Niveau. Sinnvoll: Heizungsoptimierung und Eigenstrom – wir prüfen, was sich noch lohnt.` : `Ein Haus dieser Baualtersklasse mit ${f.n} verbraucht typischerweise rund ${total.toLocaleString('de-DE')} kWh im Jahr. Mit einem Sanierungsfahrplan lässt sich der Bedarf Schritt für Schritt Richtung Klasse A senken – förderfähig und in der richtigen Reihenfolge.`;
+      const t = { cost, co2, save: Math.max(0, save), trees: co2 * 1000 / 12.5 };
+      if (reduce) { Object.assign(num, t); paint(); } else gsap.to(num, { ...t, duration: .7, ease: 'power3.out', overwrite: true, onUpdate: paint });
+    };
+    [ckYear, area].forEach(el => el.addEventListener('input', calc)); san.addEventListener('change', calc);
+    heat.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { heat.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); calc(); }));
+    calc();
+  }
+
+  // FAQ-Suche
+  const faqSearch = document.getElementById('faqSearch');
+  if (faqSearch) {
+    const items = [...document.querySelectorAll('.q')].map(q => ({ q, s: q.querySelector('summary span'), a: q.querySelector('.a p'), st: q.querySelector('summary span').textContent, at: q.querySelector('.a p').textContent }));
+    const count = document.getElementById('faqCount'), empty = document.getElementById('faqEmpty');
+    const esc = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const mark = (el, text, term) => { el.innerHTML = term ? text.replace(new RegExp('(' + esc(term) + ')', 'gi'), '<mark>$1</mark>') : text; };
+    faqSearch.addEventListener('input', () => {
+      const term = faqSearch.value.trim().toLowerCase(); let n = 0;
+      items.forEach(it => { const hit = !term || it.st.toLowerCase().includes(term) || it.at.toLowerCase().includes(term); it.q.classList.toggle('hide', !hit); if (hit) n++; mark(it.s, it.st, term); mark(it.a, it.at, term); if (term && hit) it.q.open = true; if (!term) it.q.open = false; });
+      count.textContent = term ? `${n} von ${items.length}` : ''; empty.hidden = n > 0; ScrollTrigger.refresh();
+    });
+  }
+
+  // Kontakt: Thema per Kachel wählen (auch per ?thema=… in der Adresse)
+  const pick = document.getElementById('pick');
+  if (pick) {
+    const sel = document.getElementById('thema');
+    const choose = v => { pick.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === v))); sel.value = v; };
+    pick.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { choose(b.dataset.v); if (!reduce) gsap.fromTo(b, { scale: .94 }, { scale: 1, duration: .5, ease: 'elastic.out(1,.5)' }); }));
+    sel.addEventListener('change', () => choose(sel.value));
+    const q = new URLSearchParams(location.search).get('thema'); if (q) { const b = [...pick.querySelectorAll('button')].find(x => x.dataset.v.toLowerCase().includes(q.toLowerCase())); if (b) choose(b.dataset.v); }
+  }
+
   if (reduce) return;
 
   // ---------- Scroll-Reveals ----------

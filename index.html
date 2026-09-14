@@ -194,6 +194,37 @@
   </div>
 </div></section>
 
+<!-- HEIZKOSTEN- & CO2-CHECK -->
+<section class="sec numbers" id="check"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Selbst ausprobieren</p><h2 class="h-l split">Wo steht Ihr Haus? Der 30-Sekunden-Check.</h2><p class="lead reveal">Baujahr, Wohnfläche, Heizung – mehr braucht es nicht für eine erste Einordnung: geschätzter Energiebedarf, Heizkosten, CO₂-Ausstoß und was eine Sanierung auf Effizienzhaus-Niveau bringen könnte.</p></div>
+  <div class="check reveal">
+    <div class="check-in">
+      <label for="ckYear">Baujahr <output id="ckYearOut">1968</output></label>
+      <input type="range" id="ckYear" min="1900" max="2026" step="1" value="1968" aria-label="Baujahr">
+      <label for="ckArea">Wohnfläche <output id="ckAreaOut">140 m²</output></label>
+      <input type="range" id="ckArea" min="40" max="400" step="5" value="140" aria-label="Wohnfläche in Quadratmetern">
+      <label>Heizung</label>
+      <div class="seg" id="ckHeat" role="group" aria-label="Heizungsart">
+        <button data-k="gas" aria-pressed="true">Gas</button><button data-k="oel" aria-pressed="false">Öl</button><button data-k="fern" aria-pressed="false">Fernwärme</button><button data-k="wp" aria-pressed="false">Wärmepumpe</button><button data-k="pellet" aria-pressed="false">Pellets</button>
+      </div>
+      <label class="toggle"><input type="checkbox" id="ckSan"> Seitdem schon teilweise saniert (Dach, Fenster oder Fassade)</label>
+      <p class="calc-note" style="color:var(--dark-ink-2)">Richtwerte auf Basis typischer Verbrauchskennwerte nach Baualtersklasse, Energiepreisen und CO₂-Faktoren (Stand 2026). Ersetzt keine Bestandsaufnahme – die machen wir vor Ort.</p>
+    </div>
+    <div class="check-out">
+      <div class="ck-top"><div><span class="ck-cls" id="ckCls">G</span></div><div><b id="ckKwh">200</b><small>kWh/m²·a Endenergie</small></div></div>
+      <div class="ck-grid">
+        <div><b id="ckCost">0 €</b><small>Heizkosten pro Jahr</small></div>
+        <div><b id="ckCo2">0 t</b><small>CO₂ pro Jahr</small></div>
+        <div><b id="ckSave">0 €</b><small>Einsparung nach Sanierung auf Klasse A pro Jahr</small></div>
+        <div><b id="ckTrees">0</b><small>Bäume, die das CO₂ binden müssten</small></div>
+      </div>
+      <div class="ck-bar" aria-hidden="true"><i id="ckBar"></i></div>
+      <p class="ck-hint" id="ckHint"></p>
+      <a class="btn btn-primary" href="kontakt.html">Kostenfreie Ersteinschätzung anfragen</a>
+    </div>
+  </div>
+</div></section>
+
 <!-- ABLAUF -->
 <section class="sec process" id="ablauf">
   <div class="wrap"><div class="sec-head"><p class="eyebrow">Ablauf</p><h2 class="h-l split">Vier Schritte. Eine Verantwortung.</h2></div></div>
@@ -249,6 +280,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>
