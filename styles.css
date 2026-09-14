@@ -626,3 +626,4 @@ body.menu-open .nav.over ul a{color:var(--ink)}body.menu-open .nav.over .burger 
 .consent .btn-outline{border-color:var(--line);color:var(--ink)}
 body:has(.consent:not([hidden])) .sticky-cta{transform:translateY(120%);opacity:0}
 @media(prefers-reduced-motion:reduce){.consent-box{animation:none}}
+footer .credit-by a{color:#fff;border-bottom:1px solid rgba(255,255,255,.3)}footer .credit-by a:hover{border-color:#fff}
