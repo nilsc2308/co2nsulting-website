@@ -613,3 +613,16 @@ a.loc{display:block;color:inherit}
 .scene-sticky::before{content:"";position:absolute;inset:0 0 auto 0;height:160px;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,0));z-index:7;pointer-events:none}
 body.menu-open .nav.over{background:rgba(255,255,255,.72)}
 body.menu-open .nav.over ul a{color:var(--ink)}body.menu-open .nav.over .burger span{background:var(--ink)}
+/* Cookie-Hinweis */
+.consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;display:flex;justify-content:center;pointer-events:none}
+.consent[hidden]{display:none}
+.consent-box{pointer-events:auto;max-width:560px;width:100%;background:#fff;color:var(--ink);border-radius:22px;padding:24px 26px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);border:1px solid var(--line);animation:consentIn .6s var(--ease)}
+@keyframes consentIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.consent h2{font-size:18px;margin-bottom:8px}
+.consent p{font-size:14px;line-height:1.5;color:var(--ink-2)}
+.consent p a{color:var(--petrol);border-bottom:1px solid var(--line)}
+.consent-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.consent .btn{padding:12px 20px;font-size:14px}
+.consent .btn-outline{border-color:var(--line);color:var(--ink)}
+body:has(.consent:not([hidden])) .sticky-cta{transform:translateY(120%);opacity:0}
+@media(prefers-reduced-motion:reduce){.consent-box{animation:none}}

@@ -21,7 +21,7 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 | ⚠️ | **Aktuell-Sektion auf der Startseite** – „Kostenlose Energiesprechstunde für WEGs“ und „BEG-Reform 2026“ stammen aus euren LinkedIn-Beiträgen. Bitte prüfen, ob das Angebot noch gilt, und ggf. Termine/Details ergänzen | `index.html`, Abschnitt „Aktuell“ |
 | ⚠️ | **Video „Best Practice“** – die bisherige Website kündigt ein Video über eure Arbeit an. Sobald es existiert, bauen wir es ein | – |
 | ⚠️ | **FVID-Logo** – in eurer Mediathek liegt ein FVID-Logo (Mitgliedschaft?). Wenn ihr Mitglied seid, ergänzen wir es in der Fußzeile | – |
-| ⚠️ | **Analytics** – bewusst nicht eingebaut (kein Banner nötig). Falls gewünscht: Plausible oder Matomo ohne Cookies | – |
+| ⚠️ | **Google Analytics – Mess-ID eintragen** – In `main.js` steht `GA_ID = 'G-XXXXXXXXXX'`. Die echte ID (Format `G-…`) aus dem Google-Analytics-Konto des Kunden dort einsetzen; ohne ID wird nichts geladen, der Banner erscheint trotzdem. Zusätzlich im Google-Konto den **Auftragsverarbeitungsvertrag** akzeptieren (Verwaltung → Kontoeinstellungen → Zusatz zur Datenverarbeitung) | `main.js`, Zeile `GA_ID` |
 
 ## Marke
 
@@ -37,7 +37,7 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 |---|---|---|
 | ✅ | **Datenschutzerklärung** | Text von co2-consulting.eu übernommen (inkl. HostPress als Hoster). Nur die Abschnitte, die auf dieser Seite nicht zutreffen würden, sind ersetzt: Google Analytics/Ads (nicht im Einsatz) und Google Maps → OpenStreetMap (erst auf Klick); ergänzt: Cookies, Kontaktformular, jsDelivr, Schriftarten |
 | ✅ | **Impressum** | Wortgleich von co2-consulting.eu übernommen (Handelsregister 20767, Amtsgericht Aachen, Alexia Schmidt), ergänzt um den Bildnachweis |
-| ✅ | **Cookie-Consent** | Kein Banner nötig – keine Analyse-Cookies, kein Tracking. Nur ein Sitzungs-Merker für die Startanimation (§ 25 Abs. 2 TDDDG). Erklärt unter Datenschutz → „Cookies“, in der Fußzeile verlinkt als „Cookie-Einstellungen“ |
+| ✅ | **Cookie-Consent** | Eigener Banner (kein Drittanbieter): „Alle akzeptieren“ / „Nur notwendige“, gleichwertig gestaltet, Link zur Datenschutzerklärung. Google Analytics wird **erst nach Zustimmung** geladen (Consent Mode v2, Standard „denied“). Auswahl wird im Browser gespeichert, jederzeit änderbar über „Cookie-Einstellungen“ in der Fußzeile (bei Widerruf werden `_ga`-Cookies gelöscht). Datenschutzerklärung enthält die Abschnitte „Cookies und Einwilligung“ und „Google Analytics“ |
 
 ## Technik
 
@@ -52,7 +52,7 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 | ✅ | **Canonical-URLs** | Pro Seite gesetzt – zeigen auf `https://co2-consulting.eu/…` (**beim Livegang Domain bestätigen**, sonst überall ersetzen) |
 | ✅ | **404-Seite** | `404.html` mit Rückweg; GitHub Pages nutzt sie automatisch, Netlify per Regel in `netlify.toml` |
 | ✅ | **Tote Links** | Geprüft am 14.9.: alle internen Links, Bild-Pfade und Sprungmarken (`#…`) vorhanden; alle externen Links (LinkedIn, Instagram, OpenStreetMap, jsDelivr, e-recht24, OSMF) antworten mit 200 |
-| ✅ | **Performance** | Startseite: 397 KB bis zum Laden auf dem Handy (727 KB Desktop), LCP ≈ 250 ms lokal, Layout-Shift 0,000. Foto-Szene: nur das erste Foto sofort, Fotos 2–5 werden erst nach dem Laden nachgezogen; Handy bekommt die kleine Fassung. Alle Fotos WebP in zwei Größen mit `srcset`, `width`/`height`, Lazy-Loading; Schrift lokal und vorgeladen; Cache-Header in `netlify.toml` |
+| ✅ | **Performance** | Startseite (ohne Analytics-Skript, das erst nach Zustimmung kommt): 397 KB bis zum Laden auf dem Handy (727 KB Desktop), LCP ≈ 250 ms lokal, Layout-Shift 0,000. Foto-Szene: nur das erste Foto sofort, Fotos 2–5 werden erst nach dem Laden nachgezogen; Handy bekommt die kleine Fassung. Alle Fotos WebP in zwei Größen mit `srcset`, `width`/`height`, Lazy-Loading; Schrift lokal und vorgeladen; Cache-Header in `netlify.toml` |
 | ✅ | **Accessibility** | Sprung-zum-Inhalt-Link, sichtbarer Fokus, Tastaturbedienung (Menü, Quiz, Rechner, Fahrplan, FAQ), `aria-pressed`/`aria-expanded`/`aria-live`, Überschriften-Reihenfolge, Kontrast AA (Petrol auf Weiß 11:1, Grün nur für große Flächen/Buttons mit dunkler Schrift), `prefers-reduced-motion` schaltet Szene, Vorhang und Laufband ab |
 | ✅ | **Kontaktformular** | Getestet: Pflichtfelder, E-Mail-Format, Einwilligung, Honeypot, Themen-Schnellwahl, Weiterleitung auf `danke.html`. Versand über **Netlify Forms** – auf GitHub Pages funktioniert der Versand **nicht** (siehe unten) |
 
@@ -61,7 +61,7 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 | | Punkt | Stand |
 |---|---|---|
 | ✅ | **Alt-Texte** | Alle 83 `<img>` haben `alt`; dekorative Szenen-Fotos bewusst leer (`alt=""`), Inhaltsbilder beschrieben |
-| ⚠️ | **Google Analytics / Tracking** | Bewusst nicht eingebaut – so bleibt die Seite bannerfrei. Wenn gewünscht: Plausible oder Matomo (cookielos, ohne Banner). **Eure Entscheidung** |
+| ⚠️ | **Google Analytics / Tracking** | Eingebaut mit Einwilligungsbanner. **Offen: Mess-ID** (siehe oben). Nach dem Livegang im Analytics-Konto prüfen, ob Daten ankommen (Echtzeit-Bericht) |
 | ✅ | **Social Sharing / Open Graph** | Titel, Beschreibung, Bild (1200 px breit, pro Seite passend), URL, `twitter:card` – auf jeder Seite |
 | ⚠️ | **Lokale SEO-Daten** | JSON-LD `ProfessionalService` mit beiden Adressen, Telefonnummern, E-Mails, Einzugsgebiet, Social-Profilen auf jeder Seite; FAQPage auf `faq.html`, Article auf den Ratgebern. Karte (OpenStreetMap) und Route auf `kontakt.html`. **Offen: Öffnungszeiten** – dann ergänze ich `openingHours` |
 | ⏳ | **Indexierung bei Google prüfen** | Erst nach dem Livegang: Search Console anlegen, Domain bestätigen, `sitemap.xml` einreichen, nach einigen Tagen `site:co2-consulting.eu` prüfen. Google-Unternehmensprofil: Adresse, Telefon, Öffnungszeiten exakt wie auf der Website |

@@ -83,6 +83,32 @@
   if (sticky && scene && !reduce) { sticky.classList.add('off'); ScrollTrigger.create({ start: () => scene.offsetHeight - innerHeight * .6, end: 'max', onToggle: t => sticky.classList.toggle('off', !t.isActive) }); }
   document.querySelectorAll('.totop').forEach(a => a.addEventListener('click', e => { e.preventDefault(); lenis ? lenis.scrollTo(0, { duration: 1.4 }) : scrollTo({ top: 0, behavior: 'smooth' }); }));
 
+  // ---------- Cookie-Einwilligung + Google Analytics (lädt erst nach Zustimmung) ----------
+  const GA_ID = 'G-XXXXXXXXXX'; // Mess-ID aus Google Analytics eintragen (siehe LAUNCH-CHECKLISTE)
+  const consent = document.getElementById('consent');
+  if (consent) {
+    const KEY = 'co2-consent';
+    const read = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+    const write = v => { try { localStorage.setItem(KEY, v); } catch (e) {} };
+    window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } window.gtag = gtag;
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    let loaded = false;
+    const loadGA = () => {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      if (loaded || GA_ID === 'G-XXXXXXXXXX') return; loaded = true;
+      const sc = document.createElement('script'); sc.async = true; sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; document.head.appendChild(sc);
+      gtag('js', new Date()); gtag('config', GA_ID, { anonymize_ip: true });
+    };
+    const revoke = () => { gtag('consent', 'update', { analytics_storage: 'denied' }); document.cookie.split(';').forEach(c => { const n = c.split('=')[0].trim(); if (/^_ga/.test(n)) document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, ''); }); };
+    const show = () => { consent.hidden = false; };
+    const hide = () => { consent.hidden = true; };
+    document.getElementById('consentAll').addEventListener('click', () => { write('all'); hide(); loadGA(); });
+    document.getElementById('consentNone').addEventListener('click', () => { write('none'); hide(); revoke(); });
+    document.querySelectorAll('[data-consent-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(); consent.querySelector('button').focus(); }));
+    const saved = read();
+    if (saved === 'all') loadGA(); else if (saved !== 'none') show();
+  }
+
   // ---------- Interaktive Elemente (auch bei reduzierter Bewegung) ----------
   // FAQ: nur eins offen
   document.querySelectorAll('.q').forEach(d => d.addEventListener('toggle', () => { if (d.open) document.querySelectorAll('.q[open]').forEach(o => { if (o !== d) o.open = false; }); ScrollTrigger.refresh(); }));
