@@ -33,6 +33,12 @@
 
   // Glas-Navigation: beim Runterscrollen ausblenden
   let last = 0; const nav = document.getElementById('nav');
+  // Über der Foto-Szene ist die Leiste transparent (weiße Schrift), danach Glas
+  const sceneEl = document.querySelector('.scene');
+  if (sceneEl) {
+    nav.classList.add('over');
+    ScrollTrigger.create({ trigger: sceneEl, start: 'top top', end: () => 'bottom ' + Math.round(innerHeight * .35) + 'px', onToggle: t => nav.classList.toggle('over', t.isActive), onRefresh: t => nav.classList.toggle('over', t.isActive) });
+  }
   ScrollTrigger.create({ onUpdate: s => { const y = s.scroll(); nav.classList.toggle('hide', y > last && y > 120 && !document.body.classList.contains('menu-open')); last = y; } });
 
   // Wort-für-Wort-Reveals vorbereiten

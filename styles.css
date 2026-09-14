@@ -602,3 +602,14 @@ a.loc{display:block;color:inherit}
 .pick button:hover{transform:translateY(-3px)}
 .pick button[aria-pressed=true]{border-color:var(--green-2);background:#fff}
 @media(max-width:700px){.pick{grid-template-columns:repeat(3,1fr)}}
+/* Navigation über der Foto-Szene: transparent, weiße Schrift */
+.nav{transition:transform .6s var(--ease),background .5s,border-color .5s,backdrop-filter .5s}
+.nav.over{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav.over ul,.nav.over ul a{color:#fff}
+.nav.over ul a:hover,.nav.over ul a.active{color:#fff}
+.nav.over .burger span{background:#fff}
+.nav.over .cta{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav.over .cta:hover{background:var(--green);color:var(--petrol);border-color:var(--green)}
+.scene-sticky::before{content:"";position:absolute;inset:0 0 auto 0;height:160px;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,0));z-index:7;pointer-events:none}
+body.menu-open .nav.over{background:rgba(255,255,255,.72)}
+body.menu-open .nav.over ul a{color:var(--ink)}body.menu-open .nav.over .burger span{background:var(--ink)}
