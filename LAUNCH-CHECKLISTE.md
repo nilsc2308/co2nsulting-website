@@ -46,7 +46,7 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 | ✅ | **Mobile Version** | Eigene Layouts: Burger-Menü ab 1020 px, Vollbild-Menü, Sticky-Button unten, Raster brechen auf 1–2 Spalten um. Getestet bei 390 px (iPhone) und 1400 px in Chromium und WebKit (Safari-Engine), jede Seite komplett durchgescrollt – kein horizontales Scrollen |
 | ✅ | **Meta-Titel** | Für alle 15 Seiten einzeln, mit Ort/Leistung, 50–70 Zeichen |
 | ✅ | **Meta-Beschreibungen** | Für alle Seiten einzeln |
-| ✅ | **Favicon** | das Blatt-Symbol der bisherigen Website (`favicon.png`, `favicon-192.png`, `apple-touch-icon.png`) |
+| ✅ | **Favicon** | das Blatt-Symbol der bisherigen Website (`icon-blatt-64.png`, `icon-blatt-192.png`, `icon-blatt-180.png`) |
 | ✅ | **sitemap.xml** | 13 URLs (ohne danke/404), Datum 14.9.2026 |
 | ✅ | **robots.txt** | Alles frei, `danke.html` ausgeschlossen, Verweis auf Sitemap |
 | ✅ | **Canonical-URLs** | Pro Seite gesetzt – zeigen auf `https://co2-consulting.eu/…` (**beim Livegang Domain bestätigen**, sonst überall ersetzen) |
