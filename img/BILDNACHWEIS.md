@@ -17,3 +17,14 @@ Alle Fotos stammen von Unsplash und stehen unter der Unsplash-Lizenz (kostenlos 
 | 03-plan | black and red click pen on white printer paper | [ThisisEngineering](https://unsplash.com/@thisisengineering) | [Unsplash](https://unsplash.com/photos/black-and-red-click-pen-on-white-printer-paper-M_NvKwSOkug) |
 | s-daemmung | Wooden wall section with spray foam insulation | [Olek Buzunov](https://unsplash.com/@olek_bznv_photo) | [Unsplash](https://unsplash.com/photos/wooden-wall-section-with-spray-foam-insulation-nIlAoV8bZxo) |
 | s-holzfassade | Modern wooden building with horizontal slats | [nesrin saçma](https://unsplash.com/@nesrinphoto) | [Unsplash](https://unsplash.com/photos/modern-wooden-building-with-horizontal-slats-j6Od45xRlVg) |
+
+## Eigene Fotos von CO2NSULTING
+
+| Datei | Motiv | Quelle |
+|---|---|---|
+| e-buero1, e-buero2, e-buero3 | Büro und Arbeitsplätze | co2-consulting.eu (Bild1/Bild2/Bild3 aus der Mediathek der bisherigen Website) |
+| e-workshop | Workshop im Büro | LinkedIn-Unternehmensseite CO2NSULTING (Beitragsfoto) |
+| e-messe, e-stand | Messestand auf einer Fachveranstaltung | LinkedIn-Unternehmensseite CO2NSULTING (Beitragsfotos) |
+| logo, logo-claim, logo-claim-light | Logo | co2-consulting.eu |
+
+Bei den LinkedIn-Fotos sind abgebildete Personen erkennbar – bitte vor dem Livegang das Einverständnis der gezeigten Personen bestätigen (siehe LAUNCH-CHECKLISTE).

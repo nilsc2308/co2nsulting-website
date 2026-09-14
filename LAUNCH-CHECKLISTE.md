@@ -17,7 +17,10 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 | ⚠️ | **Beispiel-Fahrplan** – die Zahlen (Baujahr 1968, 265 kWh/m²a, Kosten je Schritt) sind fiktive, gerundete Beispielwerte und so gekennzeichnet. Wenn ihr ein echtes anonymisiertes Projekt habt, tauschen wir sie aus | `sanierung.html`, `main.js` (Block „Beispiel-Fahrplan“) |
 | ⚠️ | **Antwortzeit** – Kontaktseite und Danke-Seite versprechen „in der Regel innerhalb von zwei Werktagen“. Passt das? | `kontakt.html`, `danke.html` |
 | ⚠️ | **Ratgeber-Artikel** – drei allgemein gehaltene Fachartikel (iSFP, Innendämmung im Denkmal, QNG). Bitte fachlich gegenlesen | `ratgeber-*.html` |
-| ⚠️ | **Echte Fotos** – alle Fotos sind lizenzfreie Unsplash-Motive (Nachweis in `img/BILDNACHWEIS.md`). Das Aachener Rathaus und München sind echt, Team/Büro sind Symbolbilder. Eigene Fotos (Team, Büro, Projekte) würden die Seite deutlich persönlicher machen | `img/` |
+| ⚠️ | **Eigene Fotos** – eingebaut sind drei Bürofotos von co2-consulting.eu sowie drei Fotos von der LinkedIn-Seite (Workshop im Büro, Messestand). Auf den LinkedIn-Fotos sind Personen erkennbar: **bitte Einverständnis bestätigen** oder Fotos tauschen. Die übrigen Fotos sind Unsplash-Motive (Nachweis in `img/BILDNACHWEIS.md`) | `img/`, `index.html`, `ueber-uns.html`, `leistungen.html` |
+| ⚠️ | **Aktuell-Sektion auf der Startseite** – „Kostenlose Energiesprechstunde für WEGs“ und „BEG-Reform 2026“ stammen aus euren LinkedIn-Beiträgen. Bitte prüfen, ob das Angebot noch gilt, und ggf. Termine/Details ergänzen | `index.html`, Abschnitt „Aktuell“ |
+| ⚠️ | **Video „Best Practice“** – die bisherige Website kündigt ein Video über eure Arbeit an. Sobald es existiert, bauen wir es ein | – |
+| ⚠️ | **FVID-Logo** – in eurer Mediathek liegt ein FVID-Logo (Mitgliedschaft?). Wenn ihr Mitglied seid, ergänzen wir es in der Fußzeile | – |
 | ⚠️ | **Analytics** – bewusst nicht eingebaut (kein Banner nötig). Falls gewünscht: Plausible oder Matomo ohne Cookies | – |
 
 ## Marke
