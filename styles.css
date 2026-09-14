@@ -608,7 +608,7 @@ a.loc{display:block;color:inherit}
 .nav.over ul,.nav.over ul a{color:#fff}
 .nav.over ul a:hover,.nav.over ul a.active{color:#fff}
 .nav.over .burger span{background:#fff}
-.nav.over .cta{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav.over .cta{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35)}
 .nav.over .cta:hover{background:var(--green);color:var(--petrol);border-color:var(--green)}
 .scene-sticky::before{content:"";position:absolute;inset:0 0 auto 0;height:160px;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,0));z-index:7;pointer-events:none}
 body.menu-open .nav.over{background:rgba(255,255,255,.72)}
@@ -638,4 +638,4 @@ footer .madeby span{margin-right:auto}
 @media(max-width:1000px){.principles-4{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.principles-4{grid-template-columns:1fr}}
 /* Handy: Szene füllt den echten Bildschirm (kein Balken, wenn die Adressleiste einklappt) */
-@media(max-width:900px){.scene-sticky{height:100vh;height:100dvh}.tile img{height:100vh;height:100dvh}}
+@media(max-width:900px){.scene-sticky{height:100lvh}.tile img{height:100lvh}.layer-hero{padding-bottom:calc(9svh + (100lvh - 100svh))}.layer{padding-bottom:calc(100lvh - 100svh)}}
