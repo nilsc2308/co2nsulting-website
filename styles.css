@@ -645,3 +645,14 @@ footer .madeby span{margin-right:auto}
   .layer .lead{font-size:16px}
   .layer-hero{padding-bottom:12svh}
 }
+/* Handy: ganze Fotos zeigen (nichts abschneiden) – weicher Hintergrund aus demselben Foto füllt den Rest */
+.mblur{display:none}
+@media(max-width:900px){
+  .mblur{display:block;position:absolute;inset:-40px;background-position:center;background-size:cover;filter:blur(26px) brightness(.5) saturate(1.1);z-index:0;pointer-events:none}
+  .shot img,.strip img,.tile img{object-fit:contain!important;object-position:50% 50%!important}
+  .strip,.tile,.shot{background:transparent}
+  .shot,.mask-wrap{background:#123644}.strips,.tiles-wrap{background:transparent}
+  .mask-svg{z-index:3}
+  .mask-wrap{position:absolute;inset:0;z-index:3;overflow:hidden}
+  .mask-wrap .mask-svg{position:absolute;inset:0}
+}
