@@ -346,7 +346,7 @@
     textIn(layers[1], 24, tl);
     textOut(layers[1], 34, tl);
     // 2 → 3  Lamellen: Streifen fahren mit unterschiedlichem Tempo weg
-    strips.forEach((s, i) => tl.to(s, { yPercent: (i % 2 ? 1 : -1) * 105, duration: 8 + (i % 3) * 3, ease: 'power2.in' }, 36 + i * .8));
+    strips.forEach((s, i) => tl.to(s, { yPercent: (i % 2 ? 1 : -1) * 105, duration: 7 + (i % 3) * 2, ease: 'power2.in' }, 36 + i * .6));
     tl.fromTo(shot3.querySelector('img'), { scale: 1.25 }, { scale: 1.02, duration: 22 }, 36);
     textIn(layers[2], 46, tl);
     textOut(layers[2], 56, tl);
@@ -363,6 +363,7 @@
     // 4 → 5  Zoom-Dive + Lichtblitz, dann 3D-Kartenwechsel
     tl.to(tiles.map(t => t.firstElementChild), { scale: 1.9, transformOrigin: '62% 42%', duration: 8, ease: 'power2.in' }, 78);
     tl.fromTo(flash, { opacity: 0 }, { opacity: .9, duration: 1.2, ease: 'power2.in' }, 85.5).to(flash, { opacity: 0, duration: 2.5 }, 86.7);
+    if (innerWidth < 900) tl.to(shot3, { opacity: 0, duration: 4 }, 84); // Handy: Planfoto hinter der wegkippenden Karte ausblenden
     tl.to(tilesWrap, { scale: .55, borderRadius: 40, rotateY: -38, xPercent: -40, opacity: 0, duration: 8, ease: 'power2.inOut' }, 86);
     tl.fromTo(shot5, { scale: .32, borderRadius: 40, rotateY: 28, xPercent: 45, opacity: 0 }, { scale: 1, borderRadius: 0, rotateY: 0, xPercent: 0, opacity: 1, duration: 9, ease: 'power2.inOut' }, 86);
     tl.fromTo(shot5.querySelector('img'), { scale: 1.2 }, { scale: 1, duration: 14 }, 86);

@@ -634,3 +634,14 @@ footer .madeby a:first-of-type:hover{transform:translateY(-2px)}
 footer .madeby a:last-child{border-bottom:1px solid rgba(255,255,255,.3)}
 footer .madeby span{margin-right:auto}
 @media(max-width:600px){footer .madeby span{width:100%}}
+/* Handy: Bildausschnitte der Szene so legen, dass Motive nicht abgeschnitten werden (Laptop unverändert) */
+@media(max-width:900px){
+  .strip img{object-position:50% 74%}
+  .shot-plan img{object-position:42% 55%}
+  .tile img{object-position:50% 55%}
+  .shot-stadt img{object-position:64% 50%}
+  .layer h1{font-size:clamp(34px,9.5vw,44px)}
+  .layer h2{font-size:clamp(30px,8.5vw,40px)}
+  .layer .lead{font-size:16px}
+  .layer-hero{padding-bottom:12svh}
+}
