@@ -39,7 +39,7 @@
     nav.classList.add('over');
     ScrollTrigger.create({ trigger: sceneEl, start: 'top top', end: () => 'bottom ' + Math.round(innerHeight * .35) + 'px', onToggle: t => nav.classList.toggle('over', t.isActive), onRefresh: t => nav.classList.toggle('over', t.isActive) });
   }
-  ScrollTrigger.create({ onUpdate: s => { const y = s.scroll(); nav.classList.toggle('hide', y > last && y > 120 && !document.body.classList.contains('menu-open')); last = y; } });
+  // Leiste bleibt beim Scrollen immer sichtbar (kein Ausblenden).
 
   // Wort-für-Wort-Reveals vorbereiten
   document.querySelectorAll('.split').forEach(el => {
