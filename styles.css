@@ -603,7 +603,7 @@ a.loc{display:block;color:inherit}
 .pick button[aria-pressed=true]{border-color:var(--green-2);background:#fff}
 @media(max-width:700px){.pick{grid-template-columns:repeat(3,1fr)}}
 /* Navigation über der Foto-Szene: transparent, weiße Schrift */
-.nav{transition:transform .6s var(--ease),background .5s,border-color .5s,backdrop-filter .5s}
+.nav{transition:transform .6s var(--ease),background .5s,border-color .5s}
 .nav.over{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .nav.over ul,.nav.over ul a{color:#fff}
 .nav.over ul a:hover,.nav.over ul a.active{color:#fff}
@@ -639,3 +639,5 @@ footer .madeby span{margin-right:auto}
 @media(max-width:600px){.principles-4{grid-template-columns:1fr}}
 /* Handy: Szene füllt den echten Bildschirm (kein Balken, wenn die Adressleiste einklappt) */
 @media(max-width:900px){.scene-sticky{height:100lvh}.tile img{height:100lvh}.layer-hero{padding-bottom:calc(9svh + (100lvh - 100svh))}.layer{padding-bottom:calc(100lvh - 100svh)}}
+
+@media(max-width:900px){.grain{display:none}.vignette{display:none}}

@@ -370,11 +370,6 @@
     tl.to({}, { duration: 1 }, 100);
   }
 
-  // Szenenfotos 2–5 erst nach dem Laden der Seite nachziehen (Hero bleibt schnell)
-  const lateImgs = () => document.querySelectorAll('img[data-srcset]').forEach(im => { im.srcset = im.dataset.srcset; im.src = im.dataset.src; im.removeAttribute('data-srcset'); im.removeAttribute('data-src'); });
-  if (document.readyState === 'complete') lateImgs(); else window.addEventListener('load', lateImgs, { once: true });
-  setTimeout(lateImgs, 2500);
-
   window.addEventListener('load', () => {
     ScrollTrigger.refresh();
     const el = location.hash && document.getElementById(location.hash.slice(1));
