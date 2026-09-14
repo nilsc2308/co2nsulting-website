@@ -9,9 +9,8 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 
 | | Punkt | Wo |
 |---|---|---|
-| ⚠️ | **USt-IdNr.** – falls vorhanden, sonst den Absatz „Umsatzsteuer-ID“ streichen | `impressum.html` |
-| ⚠️ | **Hoster in der Datenschutzerklärung** – aktuell steht ein Platzhalter (GitHub Pages oder Netlify). Sobald klar ist, wo die Seite endgültig läuft, eintragen | `datenschutz.html`, Abschnitt „Externes Hosting“ |
-| ⚠️ | **Öffnungszeiten** – für Google-Unternehmensprofil und JSON-LD (`openingHours`) | alle Seiten, `<script type="application/ld+json">` |
+| ⚠️ | **Hoster in der Datenschutzerklärung** – wie auf der alten Seite steht HostPress GmbH. Wenn die neue Seite woanders läuft (GitHub Pages, Netlify), muss der Anbieter dort geändert werden | `datenschutz.html`, Abschnitt „Externes Hosting“ |
+| ⚠️ | **Öffnungszeiten** – eingetragen Mo–Fr 08:00–16:30 Uhr (Quelle: Eintrag Aachen bei Trustlocal, entspricht dem Google-Profil). Bitte bestätigen; für **München** liegen keine Zeiten vor | `kontakt.html`, JSON-LD auf allen Seiten |
 | ⚠️ | **Domain** – Canonical, Sitemap, robots.txt und OG-Tags zeigen auf `https://co2-consulting.eu`. Wenn die neue Seite unter einer anderen Adresse laufen soll: in allen HTML-Dateien, `sitemap.xml` und `robots.txt` ersetzen | überall |
 | ⚠️ | **Fördersätze prüfen** – Förderrechner (`foerderung.html`), Beispiel-Fahrplan (`sanierung.html`) und Ratgeber iSFP nennen die BEG-Regeln (15 % Grundförderung, +5 % iSFP-Bonus, 30.000/60.000 € Höchstbetrag, Heizung 30 % Grundförderung). Bitte vom Fachteam gegen den aktuellen Stand der BEG-Richtlinie prüfen | `foerderung.html`, `sanierung.html`, `ratgeber-isfp.html` |
 | ⚠️ | **Beispiel-Fahrplan** – die Zahlen (Baujahr 1968, 265 kWh/m²a, Kosten je Schritt) sind fiktive, gerundete Beispielwerte und so gekennzeichnet. Wenn ihr ein echtes anonymisiertes Projekt habt, tauschen wir sie aus | `sanierung.html`, `main.js` (Block „Beispiel-Fahrplan“) |
@@ -36,8 +35,8 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 
 | | Punkt | Stand |
 |---|---|---|
-| ✅ | **Datenschutzerklärung** | Von co2-consulting.eu übernommen und angepasst: OpenStreetMap statt Google Maps (erst auf Klick), Kontaktformular über den Hoster, Skripte über jsDelivr, Schrift lokal, kein Tracking. **Offen: Hoster eintragen** (Platzhalter im Abschnitt „Externes Hosting“) |
-| ⚠️ | **Impressum** | Handelsregister 20767, Amtsgericht Aachen, Alexia Schmidt, beide Standorte, Bildnachweis. **Offen: USt-IdNr.** (Absatz ergänzen oder streichen) |
+| ✅ | **Datenschutzerklärung** | Text von co2-consulting.eu übernommen (inkl. HostPress als Hoster). Nur die Abschnitte, die auf dieser Seite nicht zutreffen würden, sind ersetzt: Google Analytics/Ads (nicht im Einsatz) und Google Maps → OpenStreetMap (erst auf Klick); ergänzt: Cookies, Kontaktformular, jsDelivr, Schriftarten |
+| ✅ | **Impressum** | Wortgleich von co2-consulting.eu übernommen (Handelsregister 20767, Amtsgericht Aachen, Alexia Schmidt), ergänzt um den Bildnachweis |
 | ✅ | **Cookie-Consent** | Kein Banner nötig – keine Analyse-Cookies, kein Tracking. Nur ein Sitzungs-Merker für die Startanimation (§ 25 Abs. 2 TDDDG). Erklärt unter Datenschutz → „Cookies“, in der Fußzeile verlinkt als „Cookie-Einstellungen“ |
 
 ## Technik
