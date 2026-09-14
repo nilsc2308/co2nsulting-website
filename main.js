@@ -274,17 +274,6 @@
     const q = new URLSearchParams(location.search).get('thema'); if (q) { const b = [...pick.querySelectorAll('button')].find(x => x.dataset.v.toLowerCase().includes(q.toLowerCase())); if (b) choose(b.dataset.v); }
   }
 
-  // Handy: Fotos der Szene komplett zeigen, dahinter dasselbe Foto weichgezeichnet
-  if (scene && innerWidth < 900) {
-    const addBlur = (host, src) => { const d = document.createElement('div'); d.className = 'mblur'; d.style.backgroundImage = `url(${src})`; host.insertBefore(d, host.firstChild); };
-    addBlur(scene.querySelector('.shot-plan'), 'img/03-plan-m.webp');
-    addBlur(scene.querySelector('.shot-stadt'), 'img/05-stadt-m.webp');
-    addBlur(scene.querySelector('.strips'), 'img/02-dom-m.webp');
-    addBlur(scene.querySelector('.tiles-wrap'), 'img/04-sanierung-m.webp');
-    const svg = scene.querySelector('.mask-svg'); const wrap = document.createElement('div'); wrap.className = 'mask-wrap'; svg.parentNode.insertBefore(wrap, svg); wrap.appendChild(svg); addBlur(wrap, 'img/01-holz-m.webp');
-    scene.querySelector('#heroImg').setAttribute('preserveAspectRatio', 'xMidYMid meet');
-  }
-
   if (reduce) return;
 
   // ---------- Scroll-Reveals ----------
@@ -352,16 +341,13 @@
     textOut(layers[0], 9, tl);
     // 1 → 2  Text-Maske: „SUBSTANZ“ wächst und wird zum Fenster auf das Rathaus
     tl.fromTo(maskText, { attr: { 'font-size': 0.1 } }, { attr: { 'font-size': 620 }, duration: 16, ease: 'power2.in' }, 11);
-    tl.to(maskSvg.closest('.mask-wrap') || maskSvg, { opacity: 0, duration: 2 }, 25);
+    tl.to(maskSvg, { opacity: 0, duration: 2 }, 25);
     tl.fromTo(strips.map(s => s.firstElementChild), { scale: 1.18 }, { scale: 1, duration: 22 }, 11);
     textIn(layers[1], 24, tl);
     textOut(layers[1], 34, tl);
     // 2 → 3  Lamellen: Streifen fahren mit unterschiedlichem Tempo weg
     strips.forEach((s, i) => tl.to(s, { yPercent: (i % 2 ? 1 : -1) * 105, duration: 7 + (i % 3) * 2, ease: 'power2.in' }, 36 + i * .6));
     tl.fromTo(shot3.querySelector('img'), { scale: 1.25 }, { scale: 1.02, duration: 22 }, 36);
-    const stripBlur = $('.strips .mblur'), tileBlur = $('.tiles-wrap .mblur');
-    if (stripBlur) tl.to(stripBlur, { opacity: 0, duration: 8 }, 38);
-    if (tileBlur) tl.fromTo(tileBlur, { opacity: 0 }, { opacity: 1, duration: 8 }, 57);
     textIn(layers[2], 46, tl);
     textOut(layers[2], 56, tl);
     // 3 → 4  Kachel-Montage: neun Kacheln fliegen von außen herein

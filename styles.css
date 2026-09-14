@@ -645,14 +645,11 @@ footer .madeby span{margin-right:auto}
   .layer .lead{font-size:16px}
   .layer-hero{padding-bottom:12svh}
 }
-/* Handy: ganze Fotos zeigen (nichts abschneiden) – weicher Hintergrund aus demselben Foto füllt den Rest */
-.mblur{display:none}
-@media(max-width:900px){
-  .mblur{display:block;position:absolute;inset:-40px;background-position:center;background-size:cover;filter:blur(26px) brightness(.5) saturate(1.1);z-index:0;pointer-events:none}
-  .shot img,.strip img,.tile img{object-fit:contain!important;object-position:50% 50%!important}
-  .strip,.tile,.shot{background:transparent}
-  .shot,.mask-wrap{background:#123644}.strips,.tiles-wrap{background:transparent}
-  .mask-svg{z-index:3}
-  .mask-wrap{position:absolute;inset:0;z-index:3;overflow:hidden}
-  .mask-wrap .mask-svg{position:absolute;inset:0}
-}
+.principles-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.principles-4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.principles-4{grid-template-columns:1fr}}
+/* iOS: kein seitliches Wackeln – Seite darf horizontal nicht überlaufen */
+html{overflow-x:clip}
+@supports not (overflow-x:clip){html{overflow-x:hidden}}
+/* Handy: Szene füllt den echten Bildschirm (kein Balken, wenn die Adressleiste einklappt) */
+@media(max-width:900px){.scene-sticky{height:100vh;height:100dvh}.tile img{height:100vh;height:100dvh}}
