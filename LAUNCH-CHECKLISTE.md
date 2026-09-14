@@ -20,6 +20,14 @@ Legende: **✅ erledigt** · **⚠️ offen, braucht eine Angabe oder Entscheidu
 | ⚠️ | **Echte Fotos** – alle Fotos sind lizenzfreie Unsplash-Motive (Nachweis in `img/BILDNACHWEIS.md`). Das Aachener Rathaus und München sind echt, Team/Büro sind Symbolbilder. Eigene Fotos (Team, Büro, Projekte) würden die Seite deutlich persönlicher machen | `img/` |
 | ⚠️ | **Analytics** – bewusst nicht eingebaut (kein Banner nötig). Falls gewünscht: Plausible oder Matomo ohne Cookies | – |
 
+## Marke
+
+| | Punkt | Stand |
+|---|---|---|
+| ✅ | **Farben** | Exakt von co2-consulting.eu übernommen: Petrol `#123644` (dunkle Flächen, Buttons, Überschriften-Eyebrows), Überschriften `#183C51`, Logo-Grün `#8FC78F`, dunkles Grün `#45966A` (Ziffer im Logo, Akzente), Text `#6C6C6C`, Hellgrau `#E9E9E9` (Karten, Formularfelder), Orange `#FFBC7D` (Haupt-Buttons) |
+| ✅ | **Logo** | Original-Logo (PNG von der bisherigen Website): Wortmarke in der Navigation (`img/logo.png`), Logo mit Claim im Start-Vorhang (`img/logo-claim.png`) und in der Fußzeile (`img/logo-claim-light.png`) |
+| ⚠️ | **Schrift** | Die Original-Seite nutzt „Bagoss“ (Lizenzschrift) und „Work Sans“. Hier läuft wie gewünscht Inter (lokal). Falls Bagoss gewünscht: Lizenzdatei (woff2) nötig |
+
 ## Rechtliches
 
 | | Punkt | Stand |

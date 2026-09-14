@@ -120,34 +120,38 @@
   const planSteps = document.getElementById('planSteps');
   if (planSteps) {
     const eur = n => Math.round(n).toLocaleString('de-DE') + ' €';
-    const classes = [['A+','#1a9641'],['A','#3fa53a'],['B','#79b830'],['C','#b5c920'],['D','#e8c31b'],['E','#f19a1a'],['F','#e8661a'],['G','#d93a2b'],['H','#b3161b']];
+    // Klassen nach GEG-Anlage 10 (Endenergie kWh/m²·a)
+    const classes = [['A+', '#1a9641', '< 30'], ['A', '#3fa53a', '30–50'], ['B', '#79b830', '50–75'], ['C', '#b5c920', '75–100'], ['D', '#e8c31b', '100–130'], ['E', '#f19a1a', '130–160'], ['F', '#e8661a', '160–200'], ['G', '#d93a2b', '200–250'], ['H', '#b3161b', '> 250']];
     const steps = [
-      { cls: 8, kwh: 265, cost: 4400, inv: 0, f: 0, kicker: 'Ausgangszustand' },
-      { cls: 6, kwh: 210, cost: 3500, inv: 28000, f: .20, kicker: 'Nach Schritt 1 · Dach' },
-      { cls: 5, kwh: 175, cost: 2900, inv: 22000, f: .20, kicker: 'Nach Schritt 2 · Fenster' },
-      { cls: 3, kwh: 115, cost: 1900, inv: 45000, f: .20, kicker: 'Nach Schritt 3 · Fassade' },
-      { cls: 1, kwh: 45, cost: 700, inv: 38000, f: .55, kicker: 'Ziel · Wärmepumpe + PV' },
+      { cls: 8, kwh: 265, cost: 4400, inv: 0, f: 0, kicker: 'Ausgangszustand · Baujahr 1968' },
+      { cls: 6, kwh: 190, cost: 3200, inv: 28000, f: .20, kicker: 'Nach Schritt 1 · Dach' },
+      { cls: 5, kwh: 150, cost: 2500, inv: 22000, f: .20, kicker: 'Nach Schritt 2 · Fenster' },
+      { cls: 3, kwh: 90, cost: 1500, inv: 45000, f: .20, kicker: 'Nach Schritt 3 · Fassade' },
+      { cls: 1, kwh: 40, cost: 650, inv: 38000, f: .55, kicker: 'Ziel · Wärmepumpe + PV' },
     ];
-    const ladder = document.getElementById('ladder');
-    classes.forEach(([c, col]) => { const i = document.createElement('i'); i.style.background = col; i.title = c; ladder.appendChild(i); });
-    const el = { cls: document.getElementById('planCls'), kwh: document.getElementById('planKwh'), cost: document.getElementById('planCost'), kicker: document.getElementById('planKicker'), glow: document.getElementById('planGlow'), inv: document.getElementById('sumInv'), f: document.getElementById('sumF'), save: document.getElementById('sumSave') };
+    const scale = document.getElementById('escale');
+    classes.forEach(([c, col, range], i) => {
+      const row = document.createElement('div'); row.className = 'er';
+      row.innerHTML = `<b style="background:${col}">${c}</b><i style="background:${col};width:${34 + i * 8}%"><span class="mark">Ihr Haus</span></i><span class="rng">${range}</span>`;
+      scale.appendChild(row);
+    });
+    const rows = scale.querySelectorAll('.er');
+    const el = { kwh: document.getElementById('planKwh'), cost: document.getElementById('planCost'), kicker: document.getElementById('planKicker'), glow: document.getElementById('planGlow'), inv: document.getElementById('sumInv'), f: document.getElementById('sumF'), save: document.getElementById('sumSave') };
     const num = { kwh: 265, cost: 4400, inv: 0, f: 0, save: 0 };
-    let auto, current = 0;
     const show = i => {
-      current = i; const s = steps[i];
+      const s = steps[i];
       planSteps.querySelectorAll('.pstep').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.i === i)));
-      const [name, col] = classes[s.cls];
-      el.cls.textContent = name; el.cls.style.color = col; el.glow.style.background = col; el.kicker.textContent = s.kicker;
-      ladder.querySelectorAll('i').forEach((x, k) => x.classList.toggle('on', k === s.cls));
+      rows.forEach((r, k) => r.classList.toggle('on', k === s.cls));
+      el.glow.style.background = classes[s.cls][1]; el.kicker.textContent = s.kicker;
+      scale.setAttribute('aria-label', `Skala der Energieeffizienzklassen A+ bis H, aktuelle Klasse ${classes[s.cls][0]}`);
       let inv = 0, f = 0; for (let k = 1; k <= i; k++) { inv += steps[k].inv; f += steps[k].inv * steps[k].f; }
-      gsap.to(num, { kwh: s.kwh, cost: s.cost, inv, f, save: steps[0].cost - s.cost, duration: .8, ease: 'power3.out', onUpdate: () => {
-        el.kwh.textContent = Math.round(num.kwh); el.cost.textContent = eur(num.cost);
-        el.inv.textContent = eur(num.inv); el.f.textContent = eur(num.f); el.save.textContent = eur(num.save);
-      } });
+      const target = { kwh: s.kwh, cost: s.cost, inv, f, save: steps[0].cost - s.cost };
+      const paint = () => { el.kwh.textContent = Math.round(num.kwh); el.cost.textContent = eur(num.cost); el.inv.textContent = eur(num.inv); el.f.textContent = eur(num.f); el.save.textContent = eur(num.save); };
+      if (reduce) { Object.assign(num, target); paint(); }
+      else gsap.to(num, { ...target, duration: .8, ease: 'power3.out', overwrite: true, onUpdate: paint });
     };
-    planSteps.querySelectorAll('.pstep').forEach(b => b.addEventListener('click', () => { clearInterval(auto); show(+b.dataset.i); }));
+    planSteps.querySelectorAll('.pstep').forEach(b => b.addEventListener('click', () => show(+b.dataset.i)));
     show(0);
-    if (!reduce) ScrollTrigger.create({ trigger: planSteps, start: 'top 70%', once: true, onEnter: () => { auto = setInterval(() => { if (current >= 4) return clearInterval(auto); show(current + 1); }, 2200); } });
   }
 
   // Quiz (3 Fragen): Antworten tragen data-v, Ergebnisse stehen in <template data-res="...">
